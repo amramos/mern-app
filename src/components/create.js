@@ -9,6 +9,7 @@ export default function Create() {
     });
 
     const navigate = useNavigate();
+    const serverPort = process.env.REACT_APP_SERVER_PORT || 5050;
 
     // update state properties
     function updateForm(value) {
@@ -22,7 +23,7 @@ export default function Create() {
 
         const newPerson = {...form};
 
-        await fetch("http://localhost:5050/record", {
+        await fetch(`http://localhost:${serverPort}/record`, {
             method: "POST",
             headers: {
                 "Content-type": "application/json",
